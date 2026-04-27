@@ -17,19 +17,19 @@ ADD DOI <br>
 
 ## Problem Definition
 
-**General Problem**    
+### General Problem
 Predicting hospital readmission risk
 
-**Refined Problem**    
+### Refined Problem    
 Using patient-level clinical and demographic data stored in a MongoDB database, predict the likelihood of a patient being readmitted within 30 days of discharge and identify key risk factors associated with readmission.
 
-**Rationale for refinement**   
+### Rationale for refinement
 The refined problem focuses specifically on 30-day readmission prediction because it is a widely used benchmark in healthcare policy and quality assessment. Narrowing the scope makes the project more actionable and measurable while still addressing the broader issue. Additionally, structuring the data in MongoDB allows for flexible storage of complex patient records, including nested information like conditions, medications, encounters, and procedures. This makes it easier to integrate multiple aspects of a patient’s history into a single model, which would be more cumbersome in a strictly relational schema. The refinement therefore aligns both with real-world relevance and with the strengths of a document-based database.
 
-**Motivation**  
+### Motivation
 Hospital readmissions are both costly and, in many cases, preventable. Healthcare systems are increasingly evaluated based on readmission rates, and reducing these rates can improve patient outcomes while lowering costs. With the growing availability of electronic health records (EHRs), there is an opportunity to leverage data to identify high-risk patients before they leave the hospital. By building a predictive system, hospitals can allocate resources more effectively—such as scheduling follow-ups, improving discharge instructions, or prioritizing care coordination for at-risk individuals.
 
-**[INSERT HEADLINE?](press_release.md)**
+### [Can Hospitals Predict Readmissions Before Patients Return?](press_release.md)
 
 ## Domain Exposition
 
@@ -53,9 +53,7 @@ Hospital readmissions are both costly and, in many cases, preventable. Healthcar
 ### Domain
 This project operates within the healthcare analytics domain, specifically focusing on predictive modeling using electronic health records (EHRs). Healthcare systems generate large volumes of complex, semi-structured data, including patient demographics, diagnoses, procedures, medications, and hospital encounters. Predicting hospital readmissions is a major area of interest because it directly impacts patient outcomes and healthcare costs. With the rise of data-driven decision-making in medicine, machine learning models are increasingly used to identify high-risk patients and guide interventions.
 
-<br>
-
-**[Background Reading](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgB1SMLQsyRdT4eH9RBqcoYnATJ7pHSMm6U7yWtNT4fKP3U?e=XJLA8V)**
+### [Background Reading](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgB1SMLQsyRdT4eH9RBqcoYnATJ7pHSMm6U7yWtNT4fKP3U?e=XJLA8V)
 | Title                                                                                                                                                                                                                | Description                                                                                                                                                                             |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Hospital Readmissions Reduction Program](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQArCCor0pbMRofCwxn6fZVTAQadjBJweZ4fvuw7DFdz6QQ?e=gYiShW)                                                                                        | Overview of the Medicare HRRP policy, including how hospitals are penalized for excess readmissions and why reducing readmissions is a national priority.                               |
