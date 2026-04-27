@@ -9,7 +9,7 @@ Liam Ward<br>
 **NetID**  
 vhk7vr
 
-ADD DOI <br>
+[![DOI](https://zenodo.org/badge/1215549671.svg)](https://doi.org/10.5281/zenodo.19825701) <br>
 [Press Release](./press_release.md)<br>
 [Pipeline](./pipeline/)<br>
 [MIT License](./LICENSE)<br>
