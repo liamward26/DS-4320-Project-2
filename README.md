@@ -33,38 +33,36 @@ Hospital readmissions are both costly and, in many cases, preventable. Healthcar
 
 ## Domain Exposition
 
-<br>  
+### Terminology
 
-**Terminology:**        
-| Term / KPI                      | Definition                                                                            |
-| ------------------------------- | ------------------------------------------------------------------------------------- |
-| Readmission                     | A patient being admitted to a hospital again after being discharged                   |
-| 30-day Readmission Rate         | Percentage of patients readmitted within 30 days of discharge                         |
-| Electronic Health Records (EHR) | Digital records of patient health information (conditions, medications, visits, etc.) |
-| Comorbidity                     | Presence of multiple medical conditions in a single patient                           |
-| Length of Stay (LOS)            | Number of days a patient spends in the hospital                                       |
-| Discharge Disposition           | Where the patient goes after leaving the hospital (home, rehab, etc.)                 |
-| Risk Score                      | A model-generated probability that a patient will be readmitted                       |                       |
-| Precision                       | Of predicted readmissions, how many were correct                                      |
-| Recall                          | Of actual readmissions, how many were identified                                      |
-| AUC (ROC Curve)                 | Measures how well the model separates readmitted vs non-readmitted patients           |
-| Overfitting                     | When a model performs well on training data but poorly on new data                    |
+| Term / KPI | Definition |
+|-----------|------------|
+| Readmission | A patient being admitted to a hospital again after a prior discharge |
+| 30-Day Readmission Rate | Percentage of discharged patients readmitted within 30 days |
+| Electronic Health Records (EHR) | Digital patient records containing encounters, diagnoses, medications, labs, and related history |
+| Comorbidity | Presence of multiple medical conditions in the same patient |
+| Length of Stay (LOS) | Number of days a patient remains in the hospital during an encounter |
+| Discharge Disposition | Destination after discharge, such as home, rehabilitation, or skilled nursing care |
+| Risk Score | A model-generated probability that a patient will be readmitted |
+| Precision | Of patients predicted to be readmitted, the proportion that were actually readmitted |
+| Recall | Of patients who were actually readmitted, the proportion correctly identified |
+| ROC-AUC | Measures how well a model distinguishes readmitted versus non-readmitted patients |
+| Feature Engineering | Creating useful model inputs from raw healthcare data |
+| Overfitting | When a model performs well on training data but poorly on unseen data |
 
-<br> 
-
-**Domain:**     
+### Domain
 This project operates within the healthcare analytics domain, specifically focusing on predictive modeling using electronic health records (EHRs). Healthcare systems generate large volumes of complex, semi-structured data, including patient demographics, diagnoses, procedures, medications, and hospital encounters. Predicting hospital readmissions is a major area of interest because it directly impacts patient outcomes and healthcare costs. With the rise of data-driven decision-making in medicine, machine learning models are increasingly used to identify high-risk patients and guide interventions.
 
 <br>
 
-**[Background Reading UPDATE THIS AND LINKS TO READINGS BELOW](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgCt6AsfFMQjSZbadmAjBJIvAYJddOvRoTIve25aj9ken2g?e=4Bddu1)**
+**[Background Reading](https://myuva-my.sharepoint.com/:f:/g/personal/vhk7vr_virginia_edu/IgB1SMLQsyRdT4eH9RBqcoYnATJ7pHSMm6U7yWtNT4fKP3U?e=XJLA8V)**
 | Title                                                                                                                                                                                                                | Description                                                                                                                                                                             |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Hospital Readmissions Reduction Program](https://drive.google.com/file/d/1yIxeeBAlHEyB-zKXxSdlqWrpRAiHaJyf/view?usp=sharing)                                                                                        | Overview of the Medicare HRRP policy, including how hospitals are penalized for excess readmissions and why reducing readmissions is a national priority.                               |
-| [Designing and Delivering Whole-Person Transitional Care: The Hospital Guide to Reducing Medicaid Readmissions](https://drive.google.com/file/d/1lHIuzoeeQJdThs1JE81NxGeXdoSj_bJ4/view?usp=sharing)                  | Practical guide outlining causes of readmissions and evidence-based strategies (care coordination, discharge planning, follow-ups) to reduce them, especially for Medicaid populations. |
-| [The Role of Machine Learning in Predicting Hospital Readmissions Among General Internal Medicine Patients: A Systematic Review](https://drive.google.com/file/d/1CC2jCb6_6LKSz4SuTTCK4-Ct5z0lROjf/view?usp=sharing) | Systematic review of machine learning approaches used to predict hospital readmissions, comparing model performance and identifying key predictive features.                            |
-| [Bring the FHIR Inside (MongoDB)](https://drive.google.com/file/d/1GSOejjGp34xqdRWu4FaRvnDdHj-AEARH/view?usp=sharing)                                                                                                | Explains how FHIR-based healthcare data can be integrated into modern systems using document databases like MongoDB without replacing legacy infrastructure.                            |
-| [WHO Global Strategy on Digital Health](https://drive.google.com/file/d/1uY8rjDdVHJw6FnftzYRuAcGPjkfUdTZz/view?usp=sharing)                                                                                          | High-level framework from WHO on digital health transformation, focusing on data systems, interoperability, and improving healthcare outcomes globally.                                 |
+| [Hospital Readmissions Reduction Program](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQArCCor0pbMRofCwxn6fZVTAQadjBJweZ4fvuw7DFdz6QQ?e=gYiShW)                                                                                        | Overview of the Medicare HRRP policy, including how hospitals are penalized for excess readmissions and why reducing readmissions is a national priority.                               |
+| [Designing and Delivering Whole-Person Transitional Care: The Hospital Guide to Reducing Medicaid Readmissions](https://myuva-my.sharepoint.com/:b:/r/personal/vhk7vr_virginia_edu/Documents/Readings/Guide-to-reducing-medicaid-readmission.pdf?csf=1&web=1&e=0uqvKr)                  | Practical guide outlining causes of readmissions and evidence-based strategies (care coordination, discharge planning, follow-ups) to reduce them, especially for Medicaid populations. |
+| [The Role of Machine Learning in Predicting Hospital Readmissions Among General Internal Medicine Patients: A Systematic Review](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQDSKFQes_i7QZpf1AsFx2SIAdwkLIx6yvx7D7cKnfDqOKo?e=7bcRBL) | Systematic review of machine learning approaches used to predict hospital readmissions, comparing model performance and identifying key predictive features.                            |
+| [Bring the FHIR Inside (MongoDB)](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQAAVkncjuCeQq_fnpeagt3_Ab_fKjgmVSVs_SlqnHQFyzw?e=U7ycU4)                                                                                                | Explains how FHIR-based healthcare data can be integrated into modern systems using document databases like MongoDB without replacing legacy infrastructure.                            |
+| [WHO Global Strategy on Digital Health](https://myuva-my.sharepoint.com/:b:/g/personal/vhk7vr_virginia_edu/IQA1rtGt2krhSI3jI2mjD18RATdLJpTRj5VBAbb8obEMO1I?e=wuC45B)                                                                                          | High-level framework from WHO on digital health transformation, focusing on data systems, interoperability, and improving healthcare outcomes globally.                                 |
 
 ## Data Creation
 
@@ -102,26 +100,42 @@ The target variable for readmission was operationalized as whether a patient exp
 
 ### Implicit Schema
 
-The MongoDB database uses a patient-centered document model in which each document represents one unique patient. Top-level fields store demographic and identifying attributes, while clinical history is embedded as nested arrays of encounter records. Each encounter may contain additional nested arrays for diagnoses, medications, procedures, and observations associated with that visit.
+The MongoDB database uses a patient-centered document model. Each document in the `patients` collection represents one synthetic patient from Synthea. The patient document contains top-level demographic, geographic, identifier, and cost-related fields copied from `patients.csv`.
 
-This schema was selected because healthcare records are naturally hierarchical and longitudinal. Rather than spreading patient history across many relational tables, the document model keeps clinically related information together. This supports efficient patient-level queries, simplifies feature engineering, and better reflects how healthcare data is often reviewed in practice.
+Each patient document also contains an `encounters` array. Each object in this array represents one encounter from `encounters.csv` and includes encounter timing, provider/organization references, encounter class, codes, costs, and the derived `readmitted_30_days` label. Within each encounter, related clinical records are embedded as nested arrays: `conditions`, `medications`, `procedures`, and `observations`.
 
-**General schema outline:**
+This schema keeps a patient’s longitudinal health history together in one document, which fits the document model well because clinical histories are naturally nested and patient-centered. It also simplifies feature engineering because the analysis pipeline can query one collection and flatten embedded encounter data into an encounter-level dataframe.
+
+**Example structure:**
 
 ```json
 {
   "_id": "patient_id",
-  "BIRTHDATE": "...",
-  "GENDER": "...",
-  "RACE": "...",
-  "ETHNICITY": "...",
+  "Id": "patient_id",
+  "BIRTHDATE": "YYYY-MM-DD",
+  "DEATHDATE": null,
+  "RACE": "white",
+  "ETHNICITY": "nonhispanic",
+  "GENDER": "M",
+  "CITY": "Springfield",
+  "STATE": "Massachusetts",
+  "HEALTHCARE_EXPENSES": 9039.16,
+  "HEALTHCARE_COVERAGE": 7964.13,
   "encounters": [
     {
-      "Id": "...",
-      "START": "...",
-      "STOP": "...",
-      "ENCOUNTERCLASS": "...",
-      "readmitted_30_days": true,
+      "Id": "encounter_id",
+      "START": "2019-02-17T05:07:38+00:00",
+      "STOP": "2019-02-17T05:22:38+00:00",
+      "PATIENT": "patient_id",
+      "ORGANIZATION": "organization_id",
+      "PROVIDER": "provider_id",
+      "ENCOUNTERCLASS": "wellness",
+      "CODE": 410620009,
+      "DESCRIPTION": "Well child visit (procedure)",
+      "BASE_ENCOUNTER_COST": 129.16,
+      "TOTAL_CLAIM_COST": 877.79,
+      "PAYER_COVERAGE": 833.90,
+      "readmitted_30_days": false,
       "conditions": [],
       "medications": [],
       "procedures": [],
@@ -131,34 +145,66 @@ This schema was selected because healthcare records are naturally hierarchical a
 }
 ```
 ### Data Summary
-| Collection | Approx. Count | Description                                                            |
-| ---------- | ------------- | ---------------------------------------------------------------------- |
-| patients   | 1,163         | One document per synthetic patient with embedded clinical history      |
-| metadata   | 1             | Database creation notes, included source files, and schema description |
 
+| Collection | Count | Description |
+|-----------|-------|-------------|
+| `patients` | 1,164 documents | Patient-centered MongoDB collection containing 1,163 patient documents plus one metadata document |
 
 ### Data Dictionary
 
-| Feature                       | Data Type   | Description                                       | Example                |
-| ----------------------------- | ----------- | ------------------------------------------------- | ---------------------- |
-| _id                           | String      | Unique patient document identifier                | `8f3a...`              |
-| BIRTHDATE                     | Date/String | Patient date of birth                             | `1978-04-12`           |
-| GENDER                        | String      | Recorded patient sex                              | `F`                    |
-| RACE                          | String      | Patient race category                             | `White`                |
-| ETHNICITY                     | String      | Patient ethnicity category                        | `Hispanic`             |
-| encounters                    | Array       | Embedded list of patient encounters               | `[{...}, {...}]`       |
-| encounters.Id                 | String      | Unique encounter identifier                       | `enc_1042`             |
-| encounters.START              | Date/String | Encounter start timestamp                         | `2021-06-01T09:15:00Z` |
-| encounters.STOP               | Date/String | Encounter end timestamp                           | `2021-06-04T14:00:00Z` |
-| encounters.ENCOUNTERCLASS     | String      | Type of encounter                                 | `inpatient`            |
-| encounters.readmitted_30_days | Boolean     | Whether another encounter occurred within 30 days | `True`                 |
-| encounters.conditions         | Array       | Diagnoses linked to encounter                     | `[ {...} ]`            |
-| encounters.medications        | Array       | Medications linked to encounter                   | `[ {...} ]`            |
-| encounters.procedures         | Array       | Procedures linked to encounter                    | `[ {...} ]`            |
-| encounters.observations       | Array       | Clinical measurements linked to encounter         | `[ {...} ]`            |
+| Feature | Data Type | Description | Example |
+|--------|----------|-------------|---------|
+| `_id` | String | MongoDB document identifier, set equal to the Synthea patient ID | `b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85` |
+| `Id` | String | Original Synthea patient identifier | `b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85` |
+| `BIRTHDATE` | String/Date | Patient birth date | `2019-02-17` |
+| `DEATHDATE` | String/Date/Null | Patient death date, if applicable | `null` |
+| `RACE` | String | Patient race category | `white` |
+| `ETHNICITY` | String | Patient ethnicity category | `nonhispanic` |
+| `GENDER` | String | Recorded patient gender/sex value | `M` |
+| `BIRTHPLACE` | String | Patient birthplace | `Middleborough Massachusetts US` |
+| `CITY` | String | Patient city of residence | `Springfield` |
+| `STATE` | String | Patient state of residence | `Massachusetts` |
+| `COUNTY` | String | Patient county of residence | `Hampden County` |
+| `ZIP` | Integer/Null | Patient ZIP code | `1104` |
+| `LAT` | Float | Patient latitude | `42.08038942501558` |
+| `LON` | Float | Patient longitude | `-72.48043144917739` |
+| `HEALTHCARE_EXPENSES` | Float | Total simulated healthcare expenses for the patient | `9039.1645` |
+| `HEALTHCARE_COVERAGE` | Float | Total simulated healthcare coverage for the patient | `7964.1255` |
+| `encounters` | Array | List of encounter records embedded within the patient document | `[{...}]` |
+| `encounters.Id` | String | Unique encounter identifier | `748f8357-6cc7-551d-f31a-32fa2cf84126` |
+| `encounters.START` | String/DateTime | Encounter start timestamp | `2019-02-17T05:07:38+00:00` |
+| `encounters.STOP` | String/DateTime | Encounter stop timestamp | `2019-02-17T05:22:38+00:00` |
+| `encounters.PATIENT` | String | Patient ID linked to the encounter | `b9c610cd-28a6-4636-ccb6-c7a0d2a4cb85` |
+| `encounters.ORGANIZATION` | String | Organization ID linked to the encounter | `f7ae497d-8dc6-3721-9402-43b621a4e7d2` |
+| `encounters.PROVIDER` | String | Provider ID linked to the encounter | `82608ebb-037c-3cef-9d34-3736d69b29e8` |
+| `encounters.ENCOUNTERCLASS` | String | Type/category of encounter | `wellness` |
+| `encounters.CODE` | Integer | Clinical code for the encounter | `410620009` |
+| `encounters.DESCRIPTION` | String | Description of the encounter | `Well child visit (procedure)` |
+| `encounters.BASE_ENCOUNTER_COST` | Float | Simulated base cost of the encounter | `129.16` |
+| `encounters.TOTAL_CLAIM_COST` | Float | Simulated total claim cost for the encounter | `877.79` |
+| `encounters.PAYER_COVERAGE` | Float | Amount covered by payer for the encounter | `833.9` |
+| `encounters.REASONCODE` | Integer/Null | Code for the reason associated with the encounter, if available | `null` |
+| `encounters.REASONDESCRIPTION` | String/Null | Text description for the encounter reason, if available | `null` |
+| `encounters.readmitted_30_days` | Boolean | Derived label indicating whether the patient had another encounter within 30 days after this encounter | `false` |
+| `encounters.conditions` | Array | Diagnoses associated with the encounter | `[]` |
+| `encounters.medications` | Array | Medications associated with the encounter | `[]` |
+| `encounters.procedures` | Array | Procedures associated with the encounter | `[{...}]` |
+| `encounters.observations` | Array | Clinical observations associated with the encounter | `[{...}]` |
 
 ---
 
-### Quantification of Uncertainty (Numerical Features)
+### Quantification of Uncertainty for Numerical Features
 
-NEED TO UPDATE 
+The numerical features used in modeling were summarized to assess central tendency, spread, skewness, and missingness. These measures help quantify uncertainty and identify potential outliers or highly imbalanced variables.
+
+| Feature | Mean | Median | Std Dev | Variance | Min | Max | Range | IQR | Skew | Null % |
+|--------|------|--------|---------|----------|-----|-----|-------|-----|------|--------|
+| age_at_encounter | 42.99 | 42.03 | 24.13 | 582.35 | 0.00 | 109.95 | 109.95 | 37.96 | 0.27 | 0.0 |
+| length_of_stay_days | 0.28 | 0.01 | 29.37 | 862.37 | 0.01 | 5236.00 | 5235.99 | 0.00 | 171.21 | 0.0 |
+| prior_encounters | 75.79 | 31.00 | 163.19 | 26631.30 | 0.00 | 1562.00 | 1562.00 | 50.00 | 5.20 | 0.0 |
+| num_conditions | 0.62 | 0.00 | 0.86 | 0.74 | 0.00 | 13.00 | 13.00 | 1.00 | 1.87 | 0.0 |
+| num_medications | 0.92 | 0.00 | 1.42 | 2.02 | 0.00 | 13.00 | 13.00 | 1.00 | 2.27 | 0.0 |
+| num_procedures | 1.36 | 0.00 | 2.51 | 6.31 | 0.00 | 27.00 | 27.00 | 1.00 | 3.29 | 0.0 |
+| num_observations | 8.13 | 0.00 | 18.32 | 335.77 | 0.00 | 678.00 | 678.00 | 9.00 | 10.05 | 0.0 |
+
+Several variables exhibit strong right-skewness, particularly `length_of_stay_days`, `prior_encounters`, and `num_observations`, indicating that a relatively small number of encounters account for very large values. Because of this, tree-based models such as Random Forest are useful since they are less sensitive to extreme values than purely linear approaches.
