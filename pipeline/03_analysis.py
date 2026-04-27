@@ -50,7 +50,7 @@ def setup_logging() -> None:
     )
 
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    console.setLevel(logging.WARNING)
     console.setFormatter(logging.Formatter("%(levelname)s - %(message)s"))
     logging.getLogger().addHandler(console)
 
@@ -353,6 +353,7 @@ def run_analysis() -> None:
     )
 
     logging.info("Analysis pipeline complete")
+    print("Analysis complete. Model results saved to outputs/model_results.csv.")
     print(model_results)
 
 

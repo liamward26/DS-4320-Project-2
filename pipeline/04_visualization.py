@@ -28,7 +28,7 @@ def setup_logging() -> None:
     )
 
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    console.setLevel(logging.WARNING)
     console.setFormatter(logging.Formatter("%(levelname)s - %(message)s"))
     logging.getLogger().addHandler(console)
 
@@ -185,7 +185,7 @@ def run_visualization() -> None:
     plot_readmission_by_prior_encounters(analysis_dataset)
 
     logging.info("Visualization pipeline complete")
-    print(f"Saved Plotly figures to {FIGURE_DIR}")
+    print(f"Visualization complete. Figures saved to {FIGURE_DIR}.")
 
 
 if __name__ == "__main__":

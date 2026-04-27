@@ -45,7 +45,7 @@ def setup_logging() -> None:
     )
 
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    console.setLevel(logging.WARNING)
     console.setFormatter(logging.Formatter("%(levelname)s - %(message)s"))
     logging.getLogger().addHandler(console)
 
@@ -238,7 +238,7 @@ def load_to_mongo(documents: list[dict]) -> None:
         raise
 
 
-def load_mongo() -> None:
+def run_load_mongo() -> None:
     """Run the full MongoDB loading process."""
     setup_logging()
     logging.info("Starting MongoDB loading process")
@@ -252,7 +252,8 @@ def load_mongo() -> None:
     load_to_mongo(documents)
 
     logging.info("MongoDB loading process complete")
+    print("MongoDB load complete. Patient-centered documents are stored in hospital_readmissions.patients.")
 
 
 if __name__ == "__main__":
-    load_mongo()
+    run_load_mongo()

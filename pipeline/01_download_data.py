@@ -43,7 +43,7 @@ def setup_logging() -> None:
     )
 
     console = logging.StreamHandler()
-    console.setLevel(logging.INFO)
+    console.setLevel(logging.WARNING)
     console.setFormatter(logging.Formatter("%(levelname)s - %(message)s"))
     logging.getLogger().addHandler(console)
 
@@ -117,6 +117,7 @@ def run_download() -> None:
     extract_needed_csvs()
 
     logging.info("Raw data acquisition process complete")
+    print("Data acquisition complete. Selected CSV files are saved in data/raw/.")
 
 
 if __name__ == "__main__":
